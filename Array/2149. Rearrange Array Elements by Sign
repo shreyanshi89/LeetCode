@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        
+        vector<int> res(nums.size());
+        int x = 0;
+        int y = 1;
+        
+        for(int num : nums){    
+            if(num > 0){
+                res[x] = num;
+                x += 2;
+            }
+            else{
+                res[y] = num;
+                y += 2;
+            }
+        }
+        return res;
+    }
+};
