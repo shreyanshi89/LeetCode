@@ -1,0 +1,20 @@
+class Solution {
+    
+public:
+    void inorder(TreeNode* root,TreeNode*& r){
+        if(!root)
+            return;
+        
+        inorder(root->left,r);
+        r->right = new TreeNode(root->val);
+        r = r->right;
+        inorder(root->right,r);
+    }
+    
+    TreeNode* increasingBST(TreeNode* root) {
+        TreeNode* r = new TreeNode();
+        TreeNode* tree = r;
+        inorder(root,r);
+        return tree->right;
+    }
+};
