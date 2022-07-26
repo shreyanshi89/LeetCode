@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> numberOfPairs(vector<int>& nums) {
+        
+        vector<int> ans(2,0);
+        vector<int> arr(101);
+        int pairs = 0;
+        int leftOver = 0;
+        
+        for(int num: nums)
+            arr[num]++;
+        
+        for(int num: arr){
+            ans[0] += num/2;
+            ans[1] += num%2;
+        }
+        return ans;
+    }
+};
