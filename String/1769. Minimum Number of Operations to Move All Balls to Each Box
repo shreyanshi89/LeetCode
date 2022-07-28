@@ -1,0 +1,47 @@
+// Approach 1: O(n^2)
+
+class Solution {
+public:
+    vector<int> minOperations(string boxes) {
+        int n = boxes.size();
+        vector<int> ans(n,0);
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(boxes[j] == '1'){
+                    int a = (i>j)? (i-j):(j-i);
+                    ans[i] += a;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+/*
+      OR 
+    
+// First calculate from Left to Right then Right t Left
+
+class Solution {
+public:
+    vector<int> minOperations(string boxes) {
+        int n = boxes.size();
+        vector<int> ans(n,0);
+        
+        for(int i=0, ctr=0, op=0;i<n;i++){
+            ans[i] += op;
+            ctr += (boxes[i] == '1')? 1:0;
+            op += ctr; 
+        }
+        
+        for(int i=n-1, ctr=0, op=0;i>=0;i--){
+            ans[i] += op;
+            ctr += (boxes[i] == '1')? 1:0;
+            op += ctr; 
+        }
+        return ans;
+    }
+};
+
+*/
