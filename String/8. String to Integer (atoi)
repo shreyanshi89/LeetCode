@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        int num = 0;
+        int i = 0;
+        int n = s.size();
+        bool sign = false;
+        
+        while(s[i] == ' ' && i < n)
+            i++;
+        
+        if(s[i] == '-' && i < n){
+            sign = true;
+            i++;
+        }
+        else if(s[i] == '+' && i < n){
+            sign = false;
+            i++;
+        }
+        
+        while(isdigit(s[i]) && i < n){
+            int r = s[i] - '0';
+                
+            if((num > INT_MAX/10) || (num == INT_MAX/10 && r > INT_MAX%10))
+                return (sign == true)?INT_MIN:INT_MAX;
+            
+            num = num*10+r;
+            i++;
+            
+        }
+        if(sign == true)
+            return -num;
+        else 
+            return num;
+    }
+};
