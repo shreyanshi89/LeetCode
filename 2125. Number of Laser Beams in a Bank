@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int n = bank[0].size();
+        int n1 = 0;
+        int n2 = 0;
+        int beam = 0;
+        
+        for(auto num:bank){
+            if(n2 != 0)                
+                n1 = n2;
+            n2 = 0;
+            for(int i=0;i<n;i++){
+                if(num[i] == '1')
+                    n2++;
+            }
+            beam += (n1*n2);
+        }
+        return beam;
+    }
+};
