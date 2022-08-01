@@ -1,0 +1,43 @@
+Approach 1: Using DP
+
+class Solution {
+public:
+    int paths(int m,int n,int i,int j,vector<vector<int>>& v){
+        if(i >= m || j >= n)
+            return 0;
+        if(i == m-1 && j == n-1)
+            return 1;
+        if(v[i][j] != -1)
+            return v[i][j];
+        else 
+            return v[i][j] = paths(m,n,i+1,j,v) + paths(m,n,i,j+1,v); 
+    }
+    
+    int uniquePaths(int m, int n) {
+        int i=0; 
+        int j=0;    
+        vector <vector<int>> v(m, vector<int> (n,-1));
+        int ans = paths(m,n,i,j,v);
+        return ans;
+    }
+};
+
+/*
+      OR
+
+Approach 1: Using combinations
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int N = m+n-2;
+        int M = m-1;
+        long ans = 1;
+        for(int i=1;i<=M;i++){
+            ans = ans * (N-M+i)/i;
+        }
+        return (int)ans;
+    }
+};
+
+*/
