@@ -1,0 +1,75 @@
+// Level Order Traversal 
+// i) Count Level of tree 
+// ii) Then count sum of last level nodes
+
+class Solution {
+public:
+    int deepestLeavesSum(TreeNode* root) {
+        queue<TreeNode*> q;
+        int ctr = 0;
+        q.push(root);
+        while(!q.empty()){
+            int n = q.size();
+            for(int i=0;i<n;i++){
+                if(q.front()->left)
+                    q.push(q.front()->left);
+                if(q.front()->right)
+                    q.push(q.front()->right);
+                q.pop();
+            }
+            ctr++;
+        }
+        
+        int depth = ctr;
+        ctr = 0;
+        q.push(root);
+        while(!q.empty()){
+            if(ctr == depth-1)
+                break;
+            
+            int n = q.size();
+            for(int i=0;i<n;i++){
+                if(q.front()->left)
+                    q.push(q.front()->left);
+                if(q.front()->right)
+                    q.push(q.front()->right);
+                q.pop();
+            }
+            ctr++;   
+        }
+        
+        int sum = 0;
+        while(!q.empty()){
+            sum += q.front()->val;
+            q.pop();
+        }
+        return sum;
+    }
+};
+
+Short Code(Same Logic) : 
+/*
+
+class Solution {
+public:
+    int deepestLeavesSum(TreeNode* root) {
+        int sum = 0, i;
+        queue<TreeNode*> q;
+        int ctr = 0;
+        q.push(root);
+        while(!q.empty()){
+            int n = q.size();
+            for(i=0,sum=0;i<n;i++){
+                sum += q.front()->val;
+                if(q.front()->left)
+                    q.push(q.front()->left);
+                if(q.front()->right)
+                    q.push(q.front()->right);
+                q.pop();
+            }
+        }
+        return sum;
+    }
+};
+
+*/
