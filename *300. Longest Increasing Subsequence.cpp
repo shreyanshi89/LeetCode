@@ -1,3 +1,5 @@
+// LIS using Binary Search
+
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
