@@ -14,7 +14,6 @@ public:
                         s.push_back(ch);
             }
                 
-            
             else if(i < n-1 && chars[i] != chars[i+1]){
                 if(a != 1){
                     string str = to_string(a);
