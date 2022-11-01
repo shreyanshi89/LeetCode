@@ -9,7 +9,6 @@ public:
         
         int x = 0;
         for(auto num: m){
-            cout<<num.second<<" ";
             if(num.second == 1)
                 return -1;
 
