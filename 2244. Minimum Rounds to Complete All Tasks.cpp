@@ -1,3 +1,4 @@
+// T.C :- O(n)
 class Solution {
 public:
     int minimumRounds(vector<int>& tasks) {
@@ -7,7 +8,27 @@ public:
         for(int i=0;i<tasks.size();i++)
             m[tasks[i]]++;
         
-        int x = 0;
+        for(auto num: m){
+            if(num.second == 1)
+                return -1;
+
+            ans += (num.second + 2) / 3;
+        }
+        return ans;
+    }
+};
+
+/* 
+    OR (My Approach)
+class Solution {
+public:
+    int minimumRounds(vector<int>& tasks) {
+        int ans = 0;
+        unordered_map<int, int> m;
+
+        for(int i=0;i<tasks.size();i++)
+            m[tasks[i]]++;
+        
         for(auto num: m){
             if(num.second == 1)
                 return -1;
@@ -42,3 +63,4 @@ public:
         return ans;
     }
 };
+*/
